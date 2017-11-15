@@ -53,6 +53,24 @@ function bullet_collision()
         }
     }
 
+    //Collision between bullets ans enemy
+    for (var i = 0; i < player1.bullets.length; i++)
+    {
+
+
+
+        if ((Math.round(Math.abs(player1.bullets[i].position.x)) > Math.abs(ennemy.position.x - 15) && Math.round(Math.abs(player1.bullets[i].position.x)) <= Math.abs(ennemy.position.x) + 15)
+            && (Math.round(Math.abs(player1.bullets[i].position.y)) >= Math.abs(ennemy.position.y - 15) && Math.round(Math.abs(player1.bullets[i].position.y)) <= Math.abs(ennemy.position.y) + 15))
+
+
+        {
+            console.log("touché !");
+            scene.remove(ennemy.graphic);
+
+        }
+    }
+
+
 }
 
 function player_collision()
@@ -63,6 +81,8 @@ function player_collision()
 
     if ( x > WIDTH )
         player1.graphic.position.x -= x - WIDTH;
+    if ( x < 0 )
+        player1.graphic.position.x -= x;
     if ( y < 0 )
         player1.graphic.position.y -= y;
     if ( y > HEIGHT )
